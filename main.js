@@ -3,6 +3,8 @@ import { InputHandler } from './input.js';
 import { Map } from './map.js';
 
 //console.log('hello');
+
+let game;
 window.addEventListener('load', function () {
     const canvas = document.querySelector('#gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -56,17 +58,6 @@ window.addEventListener('load', function () {
                 context.fillText("P for play", canvas.width / 2, canvas.height / 2);
             }
 
-            let pos = 60;
-
-            for (let i = 0; i < this.player.totalLife - this.player.life; i++) {
-                context.drawImage(this.empty, 10 + pos, 10, 30, 30);
-                pos-=30;
-            }
-
-            for (let i = 0; i < this.player.life; i++) {
-                context.drawImage(this.full, 10 + i * 30, 10, 30, 30);
-            }
-
             if (this.gameOver) {
                 this.onGameOver(context);
             }
@@ -78,7 +69,7 @@ window.addEventListener('load', function () {
             context.font = "30px Comic Sans MS";
             context.fillStyle = "red";
             context.textAlign = "center";
-            context.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+            context.fillText("Game Over Press 'r' for restart", canvas.width / 2, canvas.height / 2);
         }
 
         pause(context) {
@@ -91,10 +82,14 @@ window.addEventListener('load', function () {
         }
     }
 
-    const game = new Game(canvas.width, canvas.height);
+    game = new Game(canvas.width, canvas.height);
     //console.log(game);
 
     function gameLoop() {
+        canvas.focus();
+        if(game.gameOver && game.input.keys.includes('r')){
+            game = new Game(canvas.width, canvas.height);
+        }
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update();
         game.draw(ctx);

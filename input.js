@@ -5,8 +5,8 @@ export class InputHandler{
             console.log(event.key);
             if ((event.key === 'ArrowRight' ||
                 event.key === 'ArrowLeft' ||
-                event.key === 'ArrowUp' ||
-                event.key === 'p'
+                event.key === 'p' ||
+                event.key ==='r'
                 )&& this.keys.indexOf(event.key) === -1){
                     this.keys.push(event.key);
             }
@@ -14,8 +14,8 @@ export class InputHandler{
         window.addEventListener('keyup', (event) => {
             if (event.key === 'ArrowRight' ||
                 event.key === 'ArrowLeft' ||
-                event.key === 'ArrowUp' ||
-                event.key === 'p'
+                event.key === 'p' ||
+                event.key ==='r'
                 ){
                     this.keys.splice(this.keys.indexOf(event.key), 1);
             }

@@ -10,7 +10,7 @@ export class Map{
         
     }
 
-    update(context){
+    update(){
         if(this.game.obstacles.length == 0){
             this.createObstacle();
         }else{
@@ -28,18 +28,20 @@ export class Map{
     }
 
     draw(context){
-        context.lineWidth = 2;
-        context.strokeStyle = "black";
+        // context.lineWidth = 2;
+        // context.strokeStyle = "black";
 
-        for(let i = 0; i<3; i++ ){
-            context.beginPath();
-            context.moveTo(this.coordinates[i] ,0);
-            context.lineTo(this.coordinates[i], this.height);
-            context.stroke();
-        }
+        // for(let i = 0; i<3; i++ ){
+        //     context.beginPath();
+        //     context.moveTo(this.coordinates[i] ,0);
+        //     context.lineTo(this.coordinates[i], this.height);
+        //     context.stroke();
+        // }
 
         for(let i = 0; i<this.game.obstacles.length; i++){
-            this.game.obstacles[i].update();
+            if(!this.game.isPaused){
+                this.game.obstacles[i].update();
+            }
             this.game.obstacles[i].draw(context);
         }
     }
