@@ -1,14 +1,8 @@
 export class Obstacle{
     constructor(x, y){
-        if(Math.random() < 0.5){
-            this.image = document.querySelector('#obstacle1');
-            this.width = 64;
-            this.height = 16;
-        }else{
-            this.image = document.querySelector('#obstacle2');
-            this.width = 64;
-            this.height = 32;
-        }
+        this.width = 48;
+        this.height = 48;
+        this.image = document.querySelector('#obstacle');
         this.x = x - this.width/2;
         this.y = y;
         this.speed = 3;

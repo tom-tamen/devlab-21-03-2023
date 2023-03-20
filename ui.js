@@ -56,14 +56,14 @@ function drawWorldLines() {
 }
 
 function resizeCanvas() {
-  console.log('resize')
+  //console.log('resize')
   canvas.size(camEl.offsetWidth, camEl.offsetHeight);
   video.size(camEl.offsetWidth, camEl.offsetHeight);
   // poseNet = ml5.poseNet(video, 'single' ,modelReady);
 }
 
 function switchCams() {
-  console.log('switch')
+  //console.log('switch')
   let mainPov = document.querySelector('.mainPov')
   let secondPov = document.querySelector('.secondPov')
   let tempPoveSize = {
@@ -116,7 +116,7 @@ function setup() {
   canvas = createCanvas(camEl.offsetWidth, camEl.offsetHeight);
   canvas.parent('#cam')
   video = createCapture(VIDEO);
-  console.log(video)
+  //console.log(video)
   video.size(width, height);
 
   // Create a new poseNet method with a single detection
@@ -136,17 +136,17 @@ function setup() {
       if(previousPlayerPosition === 'right') window.dispatchEvent(new KeyboardEvent('keyup', {'key': 'ArrowLeft'}))
     }
     if(poses[0].pose.nose.x > camEl.offsetWidth / 1.5) {
-      console.log('left')
+      //console.log('left')
       if(playerPosition !== 'left') window.dispatchEvent(new KeyboardEvent('keydown', {'key': 'ArrowLeft'}))
       playerPosition = 'left'
     } else if(poses[0].pose.nose.x > camEl.offsetWidth /3) {
-      console.log('mid')
+      //console.log('mid')
       if(playerPosition == 'left') window.dispatchEvent(new KeyboardEvent('keydown', {'key': 'ArrowRight'}))
       if(playerPosition == 'right') window.dispatchEvent(new KeyboardEvent('keydown', {'key': 'ArrowLeft'}))
       previousPlayerPosition = playerPosition
       playerPosition = 'mid'
     } else {
-      console.log('right')
+      //console.log('right')
       if(playerPosition !== 'right') window.dispatchEvent(new KeyboardEvent('keydown', {'key': 'ArrowRight'}))
       playerPosition = 'right'
     }

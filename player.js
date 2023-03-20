@@ -6,6 +6,9 @@ export class Player {
         this.x = this.game.width / 2 - this.width / 2;
         this.y = this.game.height - this.height - (this.game.height / 6);
         this.image = document.querySelector('#player');
+        this.boost = document.querySelector('#boost');
+        this.frameBoost = 0;
+        this.frame = 0;
         this.speed = 5;
         this.mapPlacement = 1;
         this.isMoving = false;
@@ -73,6 +76,16 @@ export class Player {
         //context.fillStyle = 'blue';
         //context.fillRect(this.x, this.y, this.width, this.height);
         context.drawImage(this.image, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+        context.drawImage(this.boost, this.frameBoost*48, 0, this.width, this.height, this.x+2, this.y+24, this.width, this.height);
+        
+
+        if(this.frame%15==0){
+            this.frameBoost++;
+            if(this.game.isPaused ||this.game.gameOver) this.frameBoost=0;
+            if(this.frameBoost>=15) this.frameBoost=0;
+        }
+        
+        this.frame++;
     }
 
 }

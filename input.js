@@ -2,7 +2,7 @@ export class InputHandler{
     constructor(){
         this.keys = [];
         window.addEventListener('keydown', (event) => {
-            console.log(event.key);
+            //console.log(event.key);
             if ((event.key === 'ArrowRight' ||
                 event.key === 'ArrowLeft' ||
                 event.key === 'p' ||
