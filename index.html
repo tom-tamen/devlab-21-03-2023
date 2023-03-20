@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Game</title>
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
+    <main>
+        <div class="toggleBoard"></div>
+        <div class="cams">
+            <div id="game" class="mainPov">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+            <div id="cam" class="secondPov"></div>
+    
+        </div>
+        <aside>
+          aside
+        </aside>
+      </main>
 
     <img src="./sprites/PlayerWalk 48x48.png" id="player" class="hideSprite">
     <img src="./sprites/obstacle1.png" id="obstacle1" class="hideSprite">
@@ -16,5 +31,6 @@
     <img src="./sprites/empty.png" id="empty" class="hideSprite">
     <img src="./sprites/full.png" id="full" class="hideSprite">
     <script type="module" src="main.js"></script>
+    <script src="ui.js"></script>
 </body>
 </html>

@@ -1,7 +1,13 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+  
+:root {
+  --PovAr: 640 / 480;
+  --GameAr: 1920 / 1080;
 }
 
 #gameCanvas{
@@ -14,4 +20,65 @@
 
 .hideSprite{
     display: none;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 0;
+    overflow-x: hidden;
+}
+
+main.board {
+  grid-template-columns: 1fr 20%;
+}
+
+.toggleBoard {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  border: solid 2px blue;
+  z-index: 10;
+}
+
+main .cams {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--PovAr);
+  max-height: 100vh;
+}
+
+#cam {
+  aspect-ratio: var(--PovAr);
+  background-color: black;
+}
+
+#game {
+  aspect-ratio: var(--GameAr);
+}
+
+
+main .cams .mainPov {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  height: 100%;
+  overflow: hidden;
+}
+
+main .cams .secondPov {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  background: white;
+  border: solid 4px #23a55a;
+  box-shadow: 5px 5px 4px black;
+  border-radius: 1rem;
+  width: 20%;
+  overflow: hidden;
+  box-sizing: content-box;
+  z-index: 10;
 }
