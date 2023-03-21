@@ -9,4 +9,7 @@ It is also possible to play with a keyboard, here are the controls:
  - Pause and play : p
  - Restart : r
  
+ 
 Have fun :)
+
+![schema](https://user-images.githubusercontent.com/71946533/226760079-56f09dd1-5dff-40d7-905c-7fcac6d6b87e.png)
