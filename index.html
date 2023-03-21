@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Game</title>
+</head>
+
+<body>
+    <main>
+        <div class="toggleBoard">Scoreboard</div>
+        <div class="cams">
+            <div id="game" class="mainPov">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+            <div id="cam" class="secondPov"></div>
+            <p class="score">Score: <span></span></p>
+        </div>
+        <aside>
+            <h4>Scoreboard</h4>
+            <ul class="scoreboard"></ul>
+        </aside>
+    </main>
+
+    <img src="./sprites/ship_4.png" id="player" class="hideSprite">
+    <img src="./sprites/boost.png" id="boost" class="hideSprite">
+    <img src="./sprites/obstacle.png" id="obstacle" class="hideSprite">
+    <script type="module" src="main.js"></script>
+    <script src="ui.js"></script>
+</body>
+
+</html>
