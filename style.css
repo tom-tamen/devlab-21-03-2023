@@ -3,6 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    color: white;
+    list-style: none;
+}
+
+main {
+  min-height: 100vh;
+  background: #000;
 }
   
 :root {
@@ -11,7 +18,7 @@
 }
 
 #gameCanvas{
-    border: 3px solid black;
+    border: 3px solid white;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -36,17 +43,16 @@ main.board {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  height: 2rem;
-  width: 2rem;
-  background-color: white;
-  border: solid 2px blue;
+  background-color: #666;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   z-index: 10;
 }
 
 main .cams {
   position: relative;
   width: 100%;
-  aspect-ratio: var(--PovAr);
   max-height: 100vh;
 }
 
@@ -81,4 +87,27 @@ main .cams .secondPov {
   overflow: hidden;
   box-sizing: content-box;
   z-index: 10;
+}
+
+main .cams .score {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 3rem;
+  color: white;
+}
+
+.scoreboard li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+aside {
+  padding-top: 6rem;
+  padding-right: 1rem;
+}
+
+aside h4 {
+  text-align: center;
 }

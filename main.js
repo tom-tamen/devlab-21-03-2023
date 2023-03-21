@@ -2,6 +2,23 @@ import { Player } from './player.js';
 import { InputHandler } from './input.js';
 import { Map } from './map.js';
 
+function updateScoreBoarde() {
+    while(document.querySelector('.scoreboard').firstElementChild) document.querySelector('.scoreboard').firstElementChild.remove()
+    let scoreboard = localStorage.getItem('scoreboard')
+    if(!scoreboard) return
+    scoreboard = JSON.parse(localStorage.getItem('scoreboard')).scoreboard.sort().reverse()
+    scoreboard.forEach((element, index) => {
+        let liEl = document.createElement('li')
+        let sp1 = document.createElement('span')
+        sp1.textContent = index + 1
+        let sp2 = document.createElement('span')
+        sp2.textContent = element
+        liEl.appendChild(sp1)
+        liEl.appendChild(sp2)
+        document.querySelector('.scoreboard').appendChild(liEl)
+    });
+}
+
 //console.log('hello');
 
 let game;
@@ -25,6 +42,8 @@ window.addEventListener('load', function () {
             this.empty = document.querySelector('#empty');
             this.time = 0;
             this.isPaused = true;
+            this.score = 0;
+            this.scoreSaved = false;
         }
 
         update() {
@@ -83,16 +102,35 @@ window.addEventListener('load', function () {
     }
 
     game = new Game(canvas.width, canvas.height);
+    updateScoreBoarde()
     //console.log(game);
 
     function gameLoop() {
         canvas.focus();
+        if(game.gameOver && !game.scoreSaved) {
+            game.scoreSaved = true
+            console.log(JSON.stringify([]))
+            if(!localStorage.getItem('scoreboard')) localStorage.setItem('scoreboard', JSON.stringify({scoreboard: []}))
+            let scoreboard = JSON.parse(localStorage.getItem('scoreboard'))
+            console.log(scoreboard)
+            scoreboard.scoreboard.push(game.score)
+            localStorage.setItem('scoreboard', JSON.stringify(scoreboard))
+            updateScoreBoarde()
+        }
         if(game.gameOver && game.input.keys.includes('r')){
             game = new Game(canvas.width, canvas.height);
         }
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update();
         game.draw(ctx);
+        if(game) {
+            if(!game.gameOver) {
+                if(!game.isPaused) {
+                    game.score += 10
+                    document.querySelector('.score > span').textContent = game.score
+                }
+            }
+        }
         requestAnimationFrame(gameLoop);
     }
 
